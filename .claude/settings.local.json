@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -c 'public function test' /c/laragon/www/Memoora/tests/Feature/Auth/*.php /c/laragon/www/Memoora/tests/Feature/*.php)"
+    ]
+  }
+}

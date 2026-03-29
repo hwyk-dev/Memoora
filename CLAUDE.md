@@ -18,7 +18,7 @@ npm run build             # Production asset build
 
 ### Testing
 ```bash
-php artisan test                                      # All tests (25 tests)
+php artisan test                                      # All tests (24 tests)
 ./vendor/bin/phpunit --testsuite Feature              # Feature tests only
 ./vendor/bin/phpunit --filter test_method_name        # Single test
 ```
@@ -35,12 +35,12 @@ php artisan pail          # Tail logs in real-time
 ### Tech Stack
 - **Backend**: Laravel 12, PHP 8.2+, Laravel Breeze auth (blade stack)
 - **Frontend**: Blade components, TailwindCSS 3 (PostCSS), Alpine.js, `darkMode: 'class'` strategy
-- **Database**: SQLite (dev default). Notes use soft deletes.
+- **Database**: MySQL (dev default, see `.env.example`). Notes use soft deletes.
 - **Auth**: Breeze-generated controllers in `app/Http/Controllers/Auth/`
 
 ### Data Model
 - `users` — standard Laravel, has many notes
-- `notes` — `user_id` FK, `title`, `content` (nullable), `is_pinned` (bool), `is_archived` (bool), `deleted_at` (soft delete)
+- `notes` — `user_id` FK, `title`, `content` (nullable), `drawing` (nullable, canvas data), `is_pinned` (bool), `is_archived` (bool), `deleted_at` (soft delete)
 
 ### Controllers
 - `DashboardController` — stats + recent notes for authenticated home
@@ -80,7 +80,9 @@ DELETE /settings          → delete account
 - `layouts/app.blade.php` — authenticated layout: fixed sidebar, top bar, flash messages, Alpine.js sidebar toggle for mobile
 - `layouts/guest.blade.php` — centered card layout for auth pages
 - `notes/_card.blade.php` — reusable note card partial (Alpine.js dropdown for actions)
+- `notes/_canvas.blade.php` — drawing canvas partial included in note create/edit forms
 - CSS utility classes defined in `resources/css/app.css` `@layer components`: `.nav-link`, `.nav-link-active`, `.card`, `.form-input`, `.btn-primary`, `.btn-secondary`
+- Global Alpine.js confirm modal registered as `Alpine.store('confirm')` in `resources/js/app.js` — use this instead of `window.confirm()` throughout the app
 
 ## Coding Conventions
 - Form Request classes for all validation (`StoreNoteRequest`, `UpdateNoteRequest`, `ProfileUpdateRequest`)
