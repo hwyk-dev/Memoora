@@ -43,6 +43,17 @@ class SettingsController extends Controller
         return back()->with('success', 'Password updated successfully.');
     }
 
+    public function updateLocale(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'locale' => ['required', 'string', 'in:en,ja,my'],
+        ]);
+
+        $request->user()->update(['locale' => $request->locale]);
+
+        return back()->with('success', 'Language updated.');
+    }
+
     public function destroy(Request $request): RedirectResponse
     {
         $request->validateWithBag('userDeletion', [

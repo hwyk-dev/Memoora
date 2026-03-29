@@ -1,14 +1,14 @@
 <x-guest-layout>
     <x-slot name="title">Create Account</x-slot>
 
-    <h2 class="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-1">Create your account</h2>
-    <p class="text-sm text-slate-500 dark:text-slate-400 mb-8">Start taking notes today</p>
+    <h2 class="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-1">{{ __('messages.auth.create_account_title') }}</h2>
+    <p class="text-sm text-slate-500 dark:text-slate-400 mb-8">{{ __('messages.auth.create_account_subtitle') }}</p>
 
     <form method="POST" action="{{ route('register') }}" class="space-y-5">
         @csrf
 
         <div>
-            <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Full name</label>
+            <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">{{ __('messages.auth.full_name') }}</label>
             <input id="name" type="text" name="name" value="{{ old('name') }}"
                    required autofocus autocomplete="name"
                    class="form-input @error('name') border-red-500 dark:border-red-500 @enderror">
@@ -18,7 +18,7 @@
         </div>
 
         <div>
-            <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Email address</label>
+            <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">{{ __('messages.auth.email') }}</label>
             <input id="email" type="email" name="email" value="{{ old('email') }}"
                    required autocomplete="username"
                    class="form-input @error('email') border-red-500 dark:border-red-500 @enderror">
@@ -28,7 +28,7 @@
         </div>
 
         <div>
-            <label for="password" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Password</label>
+            <label for="password" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">{{ __('messages.auth.password') }}</label>
             <div x-data="{ show: false }" class="relative">
                 <input id="password" :type="show ? 'text' : 'password'" name="password"
                        required autocomplete="new-password"
@@ -54,7 +54,7 @@
         </div>
 
         <div>
-            <label for="password_confirmation" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Confirm password</label>
+            <label for="password_confirmation" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">{{ __('messages.auth.confirm_password') }}</label>
             <div x-data="{ show: false }" class="relative">
                 <input id="password_confirmation" :type="show ? 'text' : 'password'" name="password_confirmation"
                        required autocomplete="new-password"
@@ -79,13 +79,13 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn-primary w-full">Create account</button>
+        <button type="submit" class="btn-primary w-full">{{ __('messages.auth.create_account') }}</button>
     </form>
 
     <div class="mt-6">
         <div class="relative flex items-center">
             <div class="flex-grow border-t border-slate-200 dark:border-zinc-700"></div>
-            <span class="mx-3 text-xs text-slate-400 dark:text-slate-500">or</span>
+            <span class="mx-3 text-xs text-slate-400 dark:text-slate-500">{{ __('messages.auth.or') }}</span>
             <div class="flex-grow border-t border-slate-200 dark:border-zinc-700"></div>
         </div>
         <button type="button" onclick="googleSignIn(this)"
@@ -96,12 +96,12 @@
                 <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
             </svg>
-            Continue with Google
+            {{ __('messages.auth.continue_with_google') }}
         </button>
     </div>
 
     <p class="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
-        Already have an account?
-        <a href="{{ route('login') }}" class="text-indigo-600 dark:text-indigo-400 font-medium hover:underline">Sign in</a>
+        {{ __('messages.auth.already_account') }}
+        <a href="{{ route('login') }}" class="text-indigo-600 dark:text-indigo-400 font-medium hover:underline">{{ __('messages.auth.sign_in_link') }}</a>
     </p>
 </x-guest-layout>

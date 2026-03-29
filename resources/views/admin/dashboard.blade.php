@@ -1,7 +1,7 @@
 <x-app-layout>
-    <x-slot name="title">Admin — Overview</x-slot>
+    <x-slot name="title">{{ __('messages.admin.overview_title') }}</x-slot>
     <x-slot name="header">
-        <h1 class="text-base font-semibold text-slate-900 dark:text-slate-100">Admin Overview</h1>
+        <h1 class="text-base font-semibold text-slate-900 dark:text-slate-100">{{ __('messages.admin.overview_title') }}</h1>
     </x-slot>
 
     {{-- Stats --}}
@@ -14,7 +14,7 @@
             </div>
             <div>
                 <p class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ number_format($stats['total_users']) }}</p>
-                <p class="text-xs text-slate-500 dark:text-slate-400">Total Users</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">{{ __('messages.admin.total_users') }}</p>
             </div>
         </div>
 
@@ -26,7 +26,7 @@
             </div>
             <div>
                 <p class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ $stats['users_today'] }}</p>
-                <p class="text-xs text-slate-500 dark:text-slate-400">New Today</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">{{ __('messages.admin.new_today') }}</p>
             </div>
         </div>
 
@@ -38,7 +38,7 @@
             </div>
             <div>
                 <p class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ number_format($stats['total_notes']) }}</p>
-                <p class="text-xs text-slate-500 dark:text-slate-400">Total Notes</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">{{ __('messages.admin.total_notes') }}</p>
             </div>
         </div>
 
@@ -50,7 +50,7 @@
             </div>
             <div>
                 <p class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ $stats['notes_today'] }}</p>
-                <p class="text-xs text-slate-500 dark:text-slate-400">Notes Today</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">{{ __('messages.admin.notes_today') }}</p>
             </div>
         </div>
     </div>
@@ -60,12 +60,12 @@
         {{-- Recent sign-ups --}}
         <div class="card">
             <div class="flex items-center justify-between mb-4">
-                <h2 class="text-sm font-semibold text-slate-900 dark:text-slate-100">Recent Sign-ups</h2>
-                <a href="{{ route('admin.users.index') }}" class="text-xs text-indigo-600 dark:text-indigo-400 hover:underline">View all →</a>
+                <h2 class="text-sm font-semibold text-slate-900 dark:text-slate-100">{{ __('messages.admin.recent_signups') }}</h2>
+                <a href="{{ route('admin.users.index') }}" class="text-xs text-indigo-600 dark:text-indigo-400 hover:underline">{{ __('messages.admin.view_all') }}</a>
             </div>
 
             @if ($recentUsers->isEmpty())
-                <p class="text-sm text-slate-400 dark:text-slate-500 py-4 text-center">No users yet.</p>
+                <p class="text-sm text-slate-400 dark:text-slate-500 py-4 text-center">{{ __('messages.admin.no_users') }}</p>
             @else
                 <div class="space-y-3">
                     @foreach ($recentUsers as $u)
@@ -78,7 +78,7 @@
                                 <p class="text-xs text-slate-400 dark:text-slate-500 truncate">{{ $u->email }}</p>
                             </div>
                             <div class="text-right flex-shrink-0">
-                                <p class="text-xs font-medium text-slate-700 dark:text-slate-300">{{ $u->notes_count }} notes</p>
+                                <p class="text-xs font-medium text-slate-700 dark:text-slate-300">{{ __('messages.admin.notes_count', ['count' => $u->notes_count]) }}</p>
                                 <p class="text-xs text-slate-400 dark:text-slate-500">{{ $u->created_at->diffForHumans() }}</p>
                             </div>
                             <a href="{{ route('admin.users.show', $u) }}" class="flex-shrink-0 text-slate-300 dark:text-slate-600 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors">
@@ -95,11 +95,11 @@
         {{-- Recent notes --}}
         <div class="card">
             <div class="flex items-center justify-between mb-4">
-                <h2 class="text-sm font-semibold text-slate-900 dark:text-slate-100">Recent Notes</h2>
+                <h2 class="text-sm font-semibold text-slate-900 dark:text-slate-100">{{ __('messages.admin.recent_notes') }}</h2>
             </div>
 
             @if ($recentNotes->isEmpty())
-                <p class="text-sm text-slate-400 dark:text-slate-500 py-4 text-center">No notes yet.</p>
+                <p class="text-sm text-slate-400 dark:text-slate-500 py-4 text-center">{{ __('messages.admin.no_notes') }}</p>
             @else
                 <div class="space-y-3">
                     @foreach ($recentNotes as $note)
@@ -110,12 +110,12 @@
                             <div class="flex-1 min-w-0">
                                 <p class="text-sm font-medium text-slate-800 dark:text-slate-200 truncate">{{ $note->title }}</p>
                                 <p class="text-xs text-slate-400 dark:text-slate-500 truncate">
-                                    by {{ $note->user->name ?? 'deleted user' }} · {{ $note->created_at->diffForHumans() }}
+                                    {{ __('messages.admin.by_user', ['name' => $note->user->name ?? __('messages.admin.deleted_user')]) }} · {{ $note->created_at->diffForHumans() }}
                                 </p>
                             </div>
                             @if ($note->is_pinned)
                                 <span class="flex-shrink-0 inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-400">
-                                    Pinned
+                                    {{ __('messages.admin.pinned') }}
                                 </span>
                             @endif
                         </div>

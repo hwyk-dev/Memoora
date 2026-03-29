@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Mini Notion** — a full-stack note-taking web app built with Laravel 12 + Breeze, Blade, TailwindCSS 3 (class-based dark mode), and Alpine.js. Features: auth (register/login/password reset), notes CRUD, search, pin, archive, dark mode, responsive sidebar UI.
+**Memoora** — a full-stack note-taking web app built with Laravel 12 + Breeze, Blade, TailwindCSS 3 (class-based dark mode), and Alpine.js. Features: auth (register/login/password reset), notes CRUD, search, pin, archive, dark mode, responsive sidebar UI.
 
 ## Commands
 

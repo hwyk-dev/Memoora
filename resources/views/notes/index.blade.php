@@ -1,7 +1,7 @@
 <x-app-layout>
-    <x-slot name="title">All Notes</x-slot>
+    <x-slot name="title">{{ __('messages.notes.all_notes') }}</x-slot>
     <x-slot name="header">
-        <h1 class="text-base font-semibold text-slate-900 dark:text-slate-100">All Notes</h1>
+        <h1 class="text-base font-semibold text-slate-900 dark:text-slate-100">{{ __('messages.notes.all_notes') }}</h1>
     </x-slot>
 
     {{-- Toolbar --}}
@@ -16,7 +16,7 @@
                     </svg>
                 </div>
                 <input type="search" name="search" value="{{ $search ?? '' }}"
-                       placeholder="Search notes…"
+                       placeholder="{{ __('messages.notes.search_placeholder') }}"
                        class="form-input pl-10 pr-10">
                 @if ($search)
                     <a href="{{ route('notes.index') }}"
@@ -33,7 +33,7 @@
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
             </svg>
-            New Note
+            {{ __('messages.notes.new_note') }}
         </a>
     </div>
 
@@ -55,12 +55,12 @@
                 </svg>
             </div>
             @if ($search)
-                <h3 class="text-base font-medium text-slate-900 dark:text-slate-100 mb-1">No notes found</h3>
+                <h3 class="text-base font-medium text-slate-900 dark:text-slate-100 mb-1">{{ __('messages.notes.no_notes') }}</h3>
                 <p class="text-sm text-slate-500 dark:text-slate-400">Try a different search term.</p>
             @else
-                <h3 class="text-base font-medium text-slate-900 dark:text-slate-100 mb-1">No notes yet</h3>
-                <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Get started by creating your first note.</p>
-                <a href="{{ route('notes.create') }}" class="btn-primary">Create a note</a>
+                <h3 class="text-base font-medium text-slate-900 dark:text-slate-100 mb-1">{{ __('messages.notes.no_notes') }}</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">{{ __('messages.notes.no_notes_desc') }}</p>
+                <a href="{{ route('notes.create') }}" class="btn-primary">{{ __('messages.dashboard.create_note') }}</a>
             @endif
         </div>
     @else

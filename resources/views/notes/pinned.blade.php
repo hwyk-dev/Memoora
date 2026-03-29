@@ -1,7 +1,7 @@
 <x-app-layout>
-    <x-slot name="title">Pinned Notes</x-slot>
+    <x-slot name="title">{{ __('messages.notes.pinned') }}</x-slot>
     <x-slot name="header">
-        <h1 class="text-base font-semibold text-slate-900 dark:text-slate-100">Pinned Notes</h1>
+        <h1 class="text-base font-semibold text-slate-900 dark:text-slate-100">{{ __('messages.notes.pinned') }}</h1>
     </x-slot>
 
     @if ($notes->isEmpty())
@@ -12,11 +12,11 @@
                           d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
                 </svg>
             </div>
-            <h3 class="text-base font-medium text-slate-900 dark:text-slate-100 mb-1">No pinned notes</h3>
+            <h3 class="text-base font-medium text-slate-900 dark:text-slate-100 mb-1">{{ __('messages.notes.no_pinned') }}</h3>
             <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">
-                Pin important notes so you can find them quickly here.
+                {{ __('messages.notes.no_pinned_desc') }}
             </p>
-            <a href="{{ route('notes.index') }}" class="btn-primary">Browse notes</a>
+            <a href="{{ route('notes.index') }}" class="btn-primary">{{ __('messages.notes.all_notes') }}</a>
         </div>
     @else
         <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">

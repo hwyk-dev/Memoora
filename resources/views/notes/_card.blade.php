@@ -25,7 +25,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
                     </svg>
-                    Edit note
+                    {{ __('messages.notes.edit') }}
                 </a>
 
                 <form method="POST" action="{{ route('notes.pin', $note) }}">
@@ -36,7 +36,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
                         </svg>
-                        {{ $note->is_pinned ? 'Unpin' : 'Pin' }}
+                        {{ $note->is_pinned ? __('messages.notes.unpin') : __('messages.notes.pin') }}
                     </button>
                 </form>
 
@@ -48,7 +48,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
                         </svg>
-                        {{ $note->is_archived ? 'Restore' : 'Archive' }}
+                        {{ $note->is_archived ? __('messages.notes.unarchive') : __('messages.notes.archive_action') }}
                     </button>
                 </form>
 
@@ -57,9 +57,9 @@
                 <form method="POST" action="{{ route('notes.destroy', $note) }}"
                       x-data
                       @submit.prevent="$store.confirm.ask({
-                          title: 'Delete this note?',
-                          message: 'This action cannot be undone.',
-                          confirmLabel: 'Delete',
+                          title: '{{ __('messages.notes.delete_confirm_title') }}',
+                          message: '{{ __('messages.notes.delete_confirm_message') }}',
+                          confirmLabel: '{{ __('messages.notes.delete_confirm_label') }}',
                           onConfirm: () => $el.submit()
                       })">
                     @csrf @method('DELETE')
@@ -69,7 +69,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                         </svg>
-                        Delete
+                        {{ __('messages.notes.delete') }}
                     </button>
                 </form>
             </div>
@@ -110,7 +110,7 @@
                     <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
                     </svg>
-                    Pinned
+                    {{ __('messages.notes.pinned_label') }}
                 </span>
             @endif
         </div>

@@ -1,7 +1,7 @@
 <x-app-layout>
-    <x-slot name="title">Archived Notes</x-slot>
+    <x-slot name="title">{{ __('messages.notes.archive') }}</x-slot>
     <x-slot name="header">
-        <h1 class="text-base font-semibold text-slate-900 dark:text-slate-100">Archived Notes</h1>
+        <h1 class="text-base font-semibold text-slate-900 dark:text-slate-100">{{ __('messages.notes.archive') }}</h1>
     </x-slot>
 
     @if ($notes->isEmpty())
@@ -12,8 +12,8 @@
                           d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
                 </svg>
             </div>
-            <h3 class="text-base font-medium text-slate-900 dark:text-slate-100 mb-1">Archive is empty</h3>
-            <p class="text-sm text-slate-500 dark:text-slate-400">Notes you archive will appear here.</p>
+            <h3 class="text-base font-medium text-slate-900 dark:text-slate-100 mb-1">{{ __('messages.notes.no_archived') }}</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400">{{ __('messages.notes.no_archived_desc') }}</p>
         </div>
     @else
         <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">

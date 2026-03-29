@@ -1,9 +1,9 @@
 
-# Mini Notion – Notes App
+# Memoora – Notes App
 Laravel 12 + TailwindCSS
 
 ## Project Overview
-Mini Notion is a simple and modern note-taking web application built using Laravel 12 and TailwindCSS. 
+Memoora is a simple and modern note-taking web application built using Laravel 12 and TailwindCSS. 
 The application allows users to create, edit, delete, and search notes with authentication and dark mode support.
 The UI should be clean, modern, and responsive.
 

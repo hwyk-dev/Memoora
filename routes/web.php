@@ -13,7 +13,7 @@ Route::get('/', function () {
         : redirect()->route('login');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'active'])->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
     Route::patch('/settings/profile', [SettingsController::class, 'updateProfile'])->name('settings.profile.update');
     Route::patch('/settings/password', [SettingsController::class, 'updatePassword'])->name('settings.password.update');
+    Route::patch('/settings/locale', [SettingsController::class, 'updateLocale'])->name('settings.locale.update');
     Route::delete('/settings', [SettingsController::class, 'destroy'])->name('settings.destroy');
 
     // Admin
@@ -45,6 +46,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/users', [AdminUserController::class, 'index'])->name('users.index');
         Route::get('/users/{user}', [AdminUserController::class, 'show'])->name('users.show');
         Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])->name('users.destroy');
+        Route::patch('/users/{user}/ban', [AdminUserController::class, 'ban'])->name('users.ban');
+        Route::patch('/users/{user}/unban', [AdminUserController::class, 'unban'])->name('users.unban');
+        Route::patch('/users/{user}/suspend', [AdminUserController::class, 'suspend'])->name('users.suspend');
+        Route::patch('/users/{user}/unsuspend', [AdminUserController::class, 'unsuspend'])->name('users.unsuspend');
     });
 });
 
