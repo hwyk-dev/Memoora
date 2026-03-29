@@ -86,7 +86,7 @@
     {{-- Rich text content preview --}}
     @if ($note->content)
         <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed flex-1">
-            {{ Str::limit(strip_tags($note->content), 160) }}
+            {{ Str::limit(html_entity_decode(strip_tags($note->content), ENT_QUOTES | ENT_HTML5, 'UTF-8'), 160) }}
         </p>
     @elseif (!$note->drawing)
         <p class="text-sm text-slate-400 dark:text-slate-600 italic flex-1">No content</p>
